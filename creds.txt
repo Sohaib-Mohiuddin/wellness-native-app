@@ -1,0 +1,18 @@
+RDS:
+	db-identifier - database-1
+	dbname - wellnessnativedb
+	username - admin
+	password - Lt384yU43IH7N20zLi27
+	port - 3306
+	endpoint - database-1.cjyhpmmoapgr.us-east-1.rds.amazonaws.com
+
+Edamam API:
+	Recipe:
+		AppID - 47e19430
+		AppKey - 3bb845ed77230a7e754635764ec810f6
+	Food:
+		AppID - ca5e9a34
+		AppKey - 814fb878f8440be1da85aeef5361d7f5
+	Nutrition:
+		AppID - 125062bc
+		AppKey - e8385085d73241252be7959aec14435d

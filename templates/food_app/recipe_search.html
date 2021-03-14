@@ -1,0 +1,50 @@
+{% extends "food_app/base.html" %} 
+{% block content %}
+<div class="container">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card card-register mx-auto mt-2">
+    <div class="card-header">Recipe Search</div>
+    <div class="card-body">
+      <form method="GET" action="{% url 'recipe-search' %}">
+        <div class="input-group mb-3">
+          <!-- <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search for Recipe</span>
+          </div> -->
+          <input
+            type="text"
+            name="searchRecipe"
+            class="form-control"
+            placeholder="eg. banana muffin or apple pie..."
+            aria-label="searchRecipe"
+            aria-describedby="basic-addon1"
+          />
+          <button class="btn btn-primary" type="submit" name="submitRecipeSearch">
+            Search
+          </button>
+        </div>
+      </form>
+      
+      <div class="row"> 
+      {% if query %}
+        {% for recipe in search_results %}
+          <div class="col-lg-3 d-flex align-items-stretch mb-3">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="{{ recipe.image }}" alt="{{ recipe.label }}" width="200" height="200">
+              <div class="card-block">
+                <h5 class="card-header">{{ recipe.label }}</h5>
+                <ul class="list-group list-group-flush">
+                {% for ingredients in recipe.ingredient_names %}
+                	<li class="list-group-item">{{ ingredients }}</li>
+                {% endfor %}
+              	</ul>
+                <a href="{{ recipe.url }}" class="btn btn-primary">Go To Recipe</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
