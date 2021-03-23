@@ -26,8 +26,9 @@ SECRET_KEY = 'y9y8nqywl_)61w&o*8-eddi2em7(bx150*66_4gd9tc2c!uua2'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'wellness-native.herokuapp.com'
+    # '127.0.0.1',
+    # 'wellness-native.herokuapp.com',
+    '*'
 ]
 
 

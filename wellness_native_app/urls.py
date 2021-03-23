@@ -22,5 +22,6 @@ urlpatterns = [
 
     # food_app views
     path('', food_app_views.home, name='food-app-home'),
-    path('recipe-search/', food_app_views.food_search, name='recipe-search')
+    path('recipe-search/', food_app_views.recipe_search, name='recipe-search'),
+    path('food-search/', food_app_views.food_search, name='food-search')
 ]

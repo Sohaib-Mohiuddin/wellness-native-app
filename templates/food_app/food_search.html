@@ -1,0 +1,93 @@
+{% extends "food_app/base.html" %} {% block content %}
+<div class="container">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card card-register mx-auto mt-2">
+    <div class="card-header">Food Search</div>
+    <div class="card-body">
+      <form method="GET" action="{% url 'food-search' %}">
+        <div class="input-group mb-3">
+          <!-- <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search for Recipe</span>
+          </div> -->
+          <input
+          type="text"
+          name="searchFood"
+          class="form-control"
+          placeholder="eg. banana muffin or apple pie..."
+          aria-label="searchFood"
+          aria-describedby="basic-addon1"
+          />
+          <button class="btn btn-primary" type="submit" name="submitFoodSearch">
+            Search
+          </button>
+        </div>
+      </form>
+
+      <div class="row">
+        {% if query %} {% for food in search_results.hints %}
+        <div class="col-lg-3 d-flex align-items-stretch mb-3">
+          <div class="card">
+            {% if 'image' in food.food %}
+              <img id="foodsearchimgid" class="card-img-top" src="{{ food.food.image }}" alt="{{ food.food.label }}" width="200" height="200" />
+            {% else %}
+              <img id="foodsearchimgid" class="card-img-top img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="{{ food.food.label }}" width="200" height="200" />
+            {% endif %}
+            <div class="card-block">
+              <h5 class="card-header">{{ food.food.label }}<a href="{{ food.food.uri }}" class="btn btn-secondary btn-sm ml-2">save</a></h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Category: {{ food.food.category }}</li>
+                {% if 'foodContentsLabel' in food.food %}
+                  <li class="list-group-item">Content Labels: {{ food.food.foodContentsLabel }}</li>
+                {% else %}
+                  <li class="list-group-item">No Content Label(s)</li>
+                {% endif %}
+              </ul>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Label</th>
+                    <th scope="col">Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Energy</th>
+                    {% if 'ENERC_KCAL' in food.food.nutrients %}
+                      <td>{{ food.food.nutrients.ENERC_KCAL | floatformat:2 }} kcal</td>
+                    {% endif %}
+                  </tr>
+                  <tr>
+                    <th scope="row">Carbohydrates</th>
+                    {% if 'CHOCDF' in food.food.nutrients %}  
+                      <td>{{ food.food.nutrients.CHOCDF | floatformat:2 }} g</td>
+                    {% endif %}
+                  </tr>
+                  <tr>
+                    <th scope="row">Fat</th>
+                    {% if 'FAT' in food.food.nutrients %}
+                      <td>{{ food.food.nutrients.FAT | floatformat:2 }} g</td>
+                    {% endif %}
+                  </tr>
+                  <tr>
+                    <th scope="row">Protein</th>
+                    {% if 'PROCNT' in food.food.nutrients %}
+                      <td>{{ food.food.nutrients.PROCNT | floatformat:2 }} g</td>
+                    {% endif %}
+                  </tr>
+                  <tr>
+                    <th scope="row">Fiber</th>
+                    {% if 'FIBTG' in food.food.nutrients %}
+                      <td>{{ food.food.nutrients.FIBTG | floatformat:2 }} g</td>
+                    {% endif %}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        {% endfor %} {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

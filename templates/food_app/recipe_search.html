@@ -25,24 +25,31 @@
       </form>
       
       <div class="row"> 
-      {% if query %}
-        {% for recipe in search_results.hits %}
+      {% if query %} {% for recipe in search_results.hits %}
           <div class="col-lg-3 d-flex align-items-stretch mb-3">
             <div class="card">
               <img class="card-img-top img-fluid" src="{{ recipe.recipe.image }}" alt="{{ recipe.recipe.label }}" width="200" height="200">
               <div class="card-block">
                 <h5 class="card-header">{{ recipe.recipe.label }}</h5>
-                <ul class="list-group list-group-flush">
-                {% for ingredients in recipe.recipe.ingredientLines %}
-                	<li class="list-group-item">{{ ingredients }}</li>
-                {% endfor %}
-              	</ul>
-                <a href="{{ recipe.recipe.url }}" class="btn btn-primary">Go To Recipe</a>
+                <table class="table">
+                  <caption><a href="{{ recipe.recipe.url }}">Go To Recipe</a></caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Ingredient</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for ingredients in recipe.recipe.ingredientLines %}
+                    <tr>
+                      <th scope="row">{{ ingredients }}</th>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-        {% endfor %}
-      {% endif %}
+        {% endfor %} {% endif %}
       </div>
     </div>
   </div>
