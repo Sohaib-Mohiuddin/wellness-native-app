@@ -16,3 +16,10 @@ Edamam API:
 	Nutrition:
 		AppID - 125062bc
 		AppKey - e8385085d73241252be7959aec14435d
+
+Django Admin:
+	username - admin
+	password - adminadmin
+
+	username - sohaib
+	password - sohaibsohaib

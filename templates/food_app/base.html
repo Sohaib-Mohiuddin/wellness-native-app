@@ -8,23 +8,32 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{% static 'food_app/css/style.css' %}">
-	<title>Recipe Finder</title>
+	<title>Wellness Native</title>
 </head>
 <body id="globalbg">
 	<header class="site-header">
 		<!-- bootstrap dark navbar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="{% url 'food-app-home' %}">Recipe Finder Home</a>
+				<a class="navbar-brand" href="{% url 'food-app-home' %}">Wellness Native</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<!-- navbar links to access different fitness calculators -->
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav">
-						<a class="nav-item nav-link" href="{% url 'recipe-search' %}">Search Recipe</a>
+					<div class="navbar-nav mr-auto">
+						<a class="nav-item nav-link" href="{% url 'recipe-search' %}">Search Recipe (ADD EMAIL RECIPE FUNC)</a>
 						<a class="nav-item nav-link" href="{% url 'food-search' %}">Search Food</a> 
+						<a class="nav-item nav-link" href="{% url 'nutrient-search' %}">Analyze Nutrients</a> 
+					</div>
+					<div class="navbar-nav">
+						{% if user.is_authenticated %}
+							<a class="nav-item nav-link float-right" href="{% url 'logout' %}">Logout</a>
+						{% else %}
+							<a class="nav-item nav-link float-right" href="{% url 'login' %}">Login</a>
+							<a class="nav-item nav-link float-right" href="{% url 'register' %}">Register</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -35,19 +44,29 @@
 		<br><br><br>
 		<!-- <h2>Recipe Finder</h2> -->
 		{% block header %}
+			{% if user.is_authenticated %}
+				<h3 class="p-3 mb-2 bg-gradient-info text-dark">Welcome {{ user }}</h3>
+				<hr>
+			{% endif %}
 		{%endblock header %}
 		
-	    {% block content %}
-			<div class="container">
-				<!-- bootstrap card to make the extra space look faded -->
-				<div class="card card-register mx-auto mt-2">
-					<div class="card-header">Recipe Finder</div>
-					<div class="card-body">
-	          <p>Error Loading ...</p>
-					</div>
+		{% if messages %} {% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %} {% endif %}
+
+    {% block content %}
+		<div class="container">
+			<!-- bootstrap card to make the extra space look faded -->
+			<div class="card card-register mx-auto mt-2">
+				<div class="card-header">Wellness Native - Error</div>
+				<div class="card-body">
+          <p>Error Loading ...</p>
 				</div>
 			</div>
-	    {% endblock content %}
+		</div>
+    {% endblock content %}
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

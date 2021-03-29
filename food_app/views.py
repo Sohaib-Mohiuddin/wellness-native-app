@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from py_edamam import Edamam
 
+# FOOD_APP VIEWS
+
 def home(request):
 	return render(request, 'food_app/home.html')
 
@@ -21,3 +23,13 @@ def food_search(request):
 		if context['query']:
 			context['search_results'] = edamam_conn.search_food(context['query'])
 	return render(request, 'food_app/food_search.html', context)
+
+def nutrient_search(request):
+	context = {}
+	if request.method == "GET":
+		edamam_conn = Edamam(nutrition_appid='125062bc', nutrition_appkey='e8385085d73241252be7959aec14435d')
+		context['query'] = request.GET.get('searchNutrient')
+		if context['query']:
+			context['query'] = context['query'].replace(', ', ',').split(',')
+			context['search_results'] = edamam_conn.search_nutrient(context['query'])
+	return render(request, 'food_app/nutrition_search.html', context)

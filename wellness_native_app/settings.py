@@ -36,6 +36,9 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'food_app.apps.FoodAppConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,3 +144,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # Styling for crispy forms
+
+LOGIN_REDIRECT_URL = 'food-app-home'

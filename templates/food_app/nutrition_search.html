@@ -1,0 +1,238 @@
+{% extends "food_app/base.html" %} {% block content %}
+<div class="container">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card card-register mx-auto mt-2">
+    <div class="card-header">Total Nutrient Intake</div>
+    <div class="card-body">
+      <form method="GET" action="{% url 'nutrient-search' %}">
+        <div class="input-group mb-3">
+          <!-- <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search for Recipe</span>
+          </div> -->
+          <!-- <input type="text" name="searchNutrient" class="form-control" placeholder="eg. banana muffin or apple pie..." aria-label="searchNutrient" aria-describedby="basic-addon1"/> -->
+          <textarea name="searchNutrient" class="form-control" placeholder="eg. 1 large apple, 1 banana" aria-label="searchNutrient"></textarea>
+          <button class="btn btn-primary" type="submit" name="submitNutrientSearch">
+            Analyze
+          </button>
+        </div>
+      </form>
+
+      <!-- <div class="row"> -->
+      {% if query %}
+      <div class="container">
+        <h3>Search: {{ query }}</h3>
+        <h3>Calories: {{ search_results.calories }}</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Total Servings</th>
+              <th scope="col"></th>
+              <th scope="col">% Daily Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {% if 'ENERC_KCAL' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.ENERC_KCAL.label }} {{ search_results.totalNutrients.ENERC_KCAL.quantity | floatformat:1 }} {{ search_results.totalNutrients.ENERC_KCAL.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.ENERC_KCAL.quantity | floatformat:1 }}{{ search_results.totalDaily.ENERC_KCAL.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FAT' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FAT.label }} {{ search_results.totalNutrients.FAT.quantity | floatformat:1 }} {{ search_results.totalNutrients.FAT.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FAT.quantity | floatformat:1 }}{{ search_results.totalDaily.FAT.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FASAT' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FASAT.label }} {{ search_results.totalNutrients.FASAT.quantity | floatformat:1 }} {{ search_results.totalNutrients.FASAT.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FASAT.quantity | floatformat:1 }}{{ search_results.totalDaily.FASAT.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FATRN' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FATRN.label }} {{ search_results.totalNutrients.FATRN.quantity | floatformat:1 }} {{ search_results.totalNutrients.FATRN.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FATRN.quantity | floatformat:1 }}{{ search_results.totalDaily.FATRN.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FAMS' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FAMS.label }} {{ search_results.totalNutrients.FAMS.quantity | floatformat:1 }} {{ search_results.totalNutrients.FAMS.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FAMS.quantity | floatformat:1 }}{{ search_results.totalDaily.FAMS.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'CHOCDF' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.CHOCDF.label }} {{ search_results.totalNutrients.CHOCDF.quantity | floatformat:1 }} {{ search_results.totalNutrients.CHOCDF.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.CHOCDF.quantity | floatformat:1 }}{{ search_results.totalDaily.CHOCDF.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FIBTG' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FIBTG.label }} {{ search_results.totalNutrients.FIBTG.quantity | floatformat:1 }} {{ search_results.totalNutrients.FIBTG.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FIBTG.quantity | floatformat:1 }}{{ search_results.totalDaily.FIBTG.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'SUGAR' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.SUGAR.label }} {{ search_results.totalNutrients.SUGAR.quantity | floatformat:1 }} {{ search_results.totalNutrients.SUGAR.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.SUGAR.quantity | floatformat:1 }}{{ search_results.totalDaily.SUGAR.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'PROCNT' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.PROCNT.label }} {{ search_results.totalNutrients.PROCNT.quantity | floatformat:1 }} {{ search_results.totalNutrients.PROCNT.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.PROCNT.quantity | floatformat:1 }}{{ search_results.totalDaily.PROCNT.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'CHOLE' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.CHOLE.label }} {{ search_results.totalNutrients.CHOLE.quantity | floatformat:1 }} {{ search_results.totalNutrients.CHOLE.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.CHOLE.quantity | floatformat:1 }}{{ search_results.totalDaily.CHOLE.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'NA' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.NA.label }} {{ search_results.totalNutrients.NA.quantity | floatformat:1 }} {{ search_results.totalNutrients.NA.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.NA.quantity | floatformat:1 }}{{ search_results.totalDaily.NA.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'CA' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.CA.label }} {{ search_results.totalNutrients.CA.quantity | floatformat:1 }} {{ search_results.totalNutrients.CA.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.CA.quantity | floatformat:1 }}{{ search_results.totalDaily.CA.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'MG' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.MG.label }} {{ search_results.totalNutrients.MG.quantity | floatformat:1 }} {{ search_results.totalNutrients.MG.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.MG.quantity | floatformat:1 }}{{ search_results.totalDaily.MG.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'K' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.K.label }} {{ search_results.totalNutrients.K.quantity | floatformat:1 }} {{ search_results.totalNutrients.K.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.K.quantity | floatformat:1 }}{{ search_results.totalDaily.K.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FE' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FE.label }} {{ search_results.totalNutrients.FE.quantity | floatformat:1 }} {{ search_results.totalNutrients.FE.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FE.quantity | floatformat:1 }}{{ search_results.totalDaily.FE.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'ZN' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.ZN.label }} {{ search_results.totalNutrients.ZN.quantity | floatformat:1 }} {{ search_results.totalNutrients.ZN.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.ZN.quantity | floatformat:1 }}{{ search_results.totalDaily.ZN.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'P' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.P.label }} {{ search_results.totalNutrients.P.quantity | floatformat:1 }} {{ search_results.totalNutrients.P.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.P.quantity | floatformat:1 }}{{ search_results.totalDaily.P.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'VITA_RAE' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.VITA_RAE.label }} {{ search_results.totalNutrients.VITA_RAE.quantity | floatformat:1 }} {{ search_results.totalNutrients.VITA_RAE.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.VITA_RAE.quantity | floatformat:1 }}{{ search_results.totalDaily.VITA_RAE.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'VITC' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.VITC.label }} {{ search_results.totalNutrients.VITC.quantity | floatformat:1 }} {{ search_results.totalNutrients.VITC.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.VITC.quantity | floatformat:1 }}{{ search_results.totalDaily.VITC.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'THIA' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.THIA.label }} {{ search_results.totalNutrients.THIA.quantity | floatformat:1 }} {{ search_results.totalNutrients.THIA.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.THIA.quantity | floatformat:1 }}{{ search_results.totalDaily.THIA.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'RIBF' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.RIBF.label }} {{ search_results.totalNutrients.RIBF.quantity | floatformat:1 }} {{ search_results.totalNutrients.RIBF.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.RIBF.quantity | floatformat:1 }}{{ search_results.totalDaily.RIBF.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'NIA' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.NIA.label }} {{ search_results.totalNutrients.NIA.quantity | floatformat:1 }} {{ search_results.totalNutrients.NIA.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.NIA.quantity | floatformat:1 }}{{ search_results.totalDaily.NIA.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'VITB6A' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.VITB6A.label }} {{ search_results.totalNutrients.VITB6A.quantity | floatformat:1 }} {{ search_results.totalNutrients.VITB6A.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.VITB6A.quantity | floatformat:1 }}{{ search_results.totalDaily.VITB6A.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'FOL' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.FOL.label }} {{ search_results.totalNutrients.FOL.quantity | floatformat:1 }} {{ search_results.totalNutrients.FOL.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.FOL.quantity | floatformat:1 }}{{ search_results.totalDaily.FOL.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'VITB12' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.VITB12.label }} {{ search_results.totalNutrients.VITB12.quantity | floatformat:1 }} {{ search_results.totalNutrients.VITB12.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.VITB12.quantity | floatformat:1 }}{{ search_results.totalDaily.VITB12.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'VITD' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.VITD.label }} {{ search_results.totalNutrients.VITD.quantity | floatformat:1 }} {{ search_results.totalNutrients.VITD.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.VITD.quantity | floatformat:1 }}{{ search_results.totalDaily.VITD.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'TOCPHA' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.TOCPHA.label }} {{ search_results.totalNutrients.TOCPHA.quantity | floatformat:1 }} {{ search_results.totalNutrients.TOCPHA.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.TOCPHA.quantity | floatformat:1 }}{{ search_results.totalDaily.TOCPHA.unit }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if 'VITK1' in search_results.totalDaily %}
+                <td scope="row">{{ search_results.totalNutrients.VITK1.label }} {{ search_results.totalNutrients.VITK1.quantity | floatformat:1 }} {{ search_results.totalNutrients.VITK1.unit }}</td>
+                <td></td>
+                <td>{{ search_results.totalDaily.VITK1.quantity | floatformat:1 }}{{ search_results.totalDaily.VITK1.unit }}</td>
+              {% endif %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+{% endblock content %}
