@@ -1,0 +1,15 @@
+{% extends "food_app/base.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+<div class="container">
+	<div class="card card-register mx-auto mt-2">
+    <div class="card-body">
+				<div class="border-top pt-3">
+					<small class="text-muted">
+						<a href="{% url 'login' %}">Log In Again</a>
+					</small>
+				</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

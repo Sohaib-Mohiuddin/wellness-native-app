@@ -1,0 +1,10 @@
+#globalbg {
+    background-image: url("../img/food-background1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: top;
+    background-attachment: fixed;
+}
+#foodsearchimgid {
+	/*width: 18rem;*/
+}
