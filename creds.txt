@@ -13,6 +13,9 @@ AWS:
 S3:
 	AWS_STORAGE_BUCKET_NAME = wellness-native-files
 
+Email Service:
+	email: wellnessnative.info@gmail.com
+	password: wellnessnative
 Edamam API:
 	Recipe:
 		AppID - 47e19430
