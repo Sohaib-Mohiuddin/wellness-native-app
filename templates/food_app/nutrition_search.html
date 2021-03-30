@@ -10,7 +10,7 @@
             <span class="input-group-text" id="basic-addon1">Search for Recipe</span>
           </div> -->
           <!-- <input type="text" name="searchNutrient" class="form-control" placeholder="eg. banana muffin or apple pie..." aria-label="searchNutrient" aria-describedby="basic-addon1"/> -->
-          <textarea name="searchNutrient" class="form-control" placeholder="eg. 1 large apple, 1 banana" aria-label="searchNutrient"></textarea>
+          <textarea name="searchNutrient" class="form-control" placeholder="1 large apple&#10;1 banana&#10;1 orange" aria-label="searchNutrient" rows="3"></textarea>
           <button class="btn btn-primary" type="submit" name="submitNutrientSearch">
             Analyze
           </button>
@@ -20,7 +20,7 @@
       <!-- <div class="row"> -->
       {% if query %}
       <div class="container">
-        <h3>Search: {{ query }}</h3>
+        <h3>{{ query }}</h3>
         <h3>Calories: {{ search_results.calories }}</h3>
         <table class="table">
           <thead>

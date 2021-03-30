@@ -6,6 +6,13 @@ RDS:
 	port - 3306
 	endpoint - database-1.cjyhpmmoapgr.us-east-1.rds.amazonaws.com
 
+AWS:
+	AWS_ACCESS_KEY_ID = ASIAZZQP6CGRHEP6A33O
+	AWS_SECRET_ACCESS_KEY = sQqqtI/tbFII+J0sc8aOo2GrCh35wupcMz4o19BG
+
+S3:
+	AWS_STORAGE_BUCKET_NAME = wellness-native-files
+
 Edamam API:
 	Recipe:
 		AppID - 47e19430

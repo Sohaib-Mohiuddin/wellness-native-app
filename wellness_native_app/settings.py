@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'food_app.apps.FoodAppConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'storages',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -89,10 +90,10 @@ WSGI_APPLICATION = 'wellness_native_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wellnessnativedb',
-        'USER': 'admin',
-        'PASSWORD': 'Lt384yU43IH7N20zLi27',
-        'HOST': 'database-1.cjyhpmmoapgr.us-east-1.rds.amazonaws.com',
+        'NAME': os.environ.get('WELLNESS_RDS_DB_NAME'),
+        'USER': os.environ.get('WELLNESS_RDS_USERNAME'),
+        'PASSWORD': os.environ.get('WELLNESS_RDS_PASSWORD'),
+        'HOST': os.environ.get('WELLNESS_RDS_HOSTNAME'),
         'PORT': '3306',
     }
 }
@@ -146,6 +147,21 @@ STATICFILES_DIRS = (
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# When using File system
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # Styling for crispy forms
 
-LOGIN_REDIRECT_URL = 'food-app-home'
+LOGIN_REDIRECT_URL = 'food-app-home' # Redirect to home after login
+LOGIN_URL = 'login'
+
+# AWS and S3 File Storage
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+AWS_STORAGE_BUCKET_NAME = 'wellnessnativefiles'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
