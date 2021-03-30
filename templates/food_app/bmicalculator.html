@@ -1,0 +1,81 @@
+{% extends "food_app/base.html" %} 
+{% block content %}
+<div class="container">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card card-register mx-auto mt-2">
+    <h3 class="card-header">BMI Calculator</h3>
+    <div class="card-body">
+      <form method="GET" action="{% url 'bmi-calculator' %}">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Weight (kg)</span>
+          </div>
+          <input type="number" name="userWeight" class="form-control" placeholder="{{ user.profile.weight }} kg" aria-label="userWeight" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Height (cm)</span>
+          </div>
+          <input type="number" name="userHeight" class="form-control" placeholder="{{ user.profile.height }} cm" aria-label="userHeight" aria-describedby="basic-addon1"/>
+        </div>
+        <button class="btn btn-primary" type="submit" name="submitBmiCalculate">Calculate BMI</button>
+      </form>
+
+      <form method="POST" action="{% url 'bmi-calculator' %}">
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Weight</span>
+          </div>
+          <input type="number" name="readonlyweight" class="form-control" aria-label="readonlyweight" aria-describedby="basic-addon1" placeholder="{{ weight }}" readonly/>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Height</span>
+          </div>
+          <input type="number" name="readonlyheight" class="form-control" aria-label="readonlyheight" aria-describedby="basic-addon1" placeholder="{{ height }}" readonly/>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">BMI Result</span>
+          </div>
+          <input type="number" name="bmiResult" class="form-control" aria-label="bmiResult" aria-describedby="basic-addon1" placeholder="{{ bmi_result | floatformat:2 }}" readonly/>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="card card-register mx-auto mt-2">
+    <div class="card-header">Saved Results</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Height</th>
+            <th scope="col">BMI</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if queryset %} {% for results in queryset %}
+            <tr>
+              <th scope="row">{{ results.id }}</th>
+              <td>{{ results.weight }} kg</td>
+              <td>{{ results.height }} cm</td>
+              <td>{{ results.bmi_result }} kg/m2</td>
+            </tr>
+          {% endfor %} {% else %}
+            <tr>
+              <th scope="row"> - </th>
+              <td> - </td>
+              <td> - </td>
+              <td> - </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
