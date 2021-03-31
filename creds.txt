@@ -33,4 +33,4 @@ Django Admin:
 	password - adminadmin
 
 	username - sohaib
-	password - adminadmin
+	password - admin12345
