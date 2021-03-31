@@ -6,12 +6,9 @@ from food_app.models import SavedBmiResults
 
 class UserRegistrationForm(UserCreationForm):
 	email = forms.EmailField()
-	age = forms.IntegerField()
-	height = forms.IntegerField(label='Height(cm)')
-	weight = forms.IntegerField(label='Weight(kg)')
 	class Meta:
 		model = User
-		fields = ['username', 'email', 'age', 'weight', 'height', 'password1', 'password2']
+		fields = ['username', 'email', 'password1', 'password2']
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
