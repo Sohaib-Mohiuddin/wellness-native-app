@@ -11,7 +11,7 @@ class UserRegistrationForm(UserCreationForm):
 	weight = forms.IntegerField(label='Weight(kg)')
 	class Meta:
 		model = User
-		fields = ['username', 'email',, 'age', 'weight', 'height' 'password1', 'password2']
+		fields = ['username', 'email', 'age', 'weight', 'height', 'password1', 'password2']
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
