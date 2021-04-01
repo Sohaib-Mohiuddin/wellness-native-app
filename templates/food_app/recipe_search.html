@@ -5,12 +5,13 @@
   <div class="card card-register mx-auto mt-2">
     <div class="card-header">Recipe Search</div>
     <div class="card-body">
-      {% if query %}
-        <div class="mb-2">
+      <div class="mb-4">
+        <p class="lead">You can search for any recipe like 'banana muffin' or something more dessert-y like 'banana muffin pudding'!</p>
+        {% if query %}
           <p class="lead">Click/Tap <mark>Image</mark> To View Ingredients</p>
           <p class="lead">Click/Tap <mark>Title</mark> To Go To Recipe Website</p>
-        </div>
-      {% endif %}
+        {% endif %}
+      </div>
       <form method="GET" action="{% url 'recipe-search' %}">
         <div class="input-group mb-3">
           <!-- <div class="input-group-prepend">
