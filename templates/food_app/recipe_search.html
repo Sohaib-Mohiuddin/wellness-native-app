@@ -5,6 +5,12 @@
   <div class="card card-register mx-auto mt-2">
     <div class="card-header">Recipe Search</div>
     <div class="card-body">
+      {% if query %}
+        <div class="mb-2">
+          <p class="lead">Click/Tap <mark>Image</mark> To View Ingredients</p>
+          <p class="lead">Click/Tap <mark>Title</mark> To Go To Recipe Website</p>
+        </div>
+      {% endif %}
       <form method="GET" action="{% url 'recipe-search' %}">
         <div class="input-group mb-3">
           <!-- <div class="input-group-prepend">
@@ -24,28 +30,35 @@
         </div>
       </form>
       
-      <div class="row"> 
-      {% if query %} {% for recipe in search_results.hits %}
-          <div class="col-lg-3 d-flex align-items-stretch mb-3">
+      <div class="card-deck"> 
+      {% if query %} 
+        {% for recipe in search_results.hits %}
+          <div class="col-lg-3 mb-3">
             <div class="card">
-              <img class="card-img-top img-fluid" src="{{ recipe.recipe.image }}" alt="{{ recipe.recipe.label }}" width="200" height="200">
+              <a href="#cardcollapse{{ forloop.counter }}" data-toggle="collapse" aria-expanded="false" aria-controls="cardcollapse{{ forloop.counter }}">
+                <img class="card-img-top img-fluid" src="{{ recipe.recipe.image }}" alt="{{ recipe.recipe.label }}" width="200" height="200">
+              </a>
               <div class="card-block">
-                <h5 class="card-header">{{ recipe.recipe.label }}</h5>
-                <table class="table">
-                  <caption><a href="{{ recipe.recipe.url }}">Go To Recipe</a></caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Ingredients</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {% for ingredients in recipe.recipe.ingredientLines %}
-                    <tr>
-                      <th scope="row">{{ ingredients }}</th>
-                    </tr>
-                  {% endfor %}
-                  </tbody>
-                </table>
+                <a href="{{ recipe.recipe.url }}">
+                  <h5 class="card-header">{{ recipe.recipe.label }}</h5>
+                </a>
+                <div class="collapse" id="cardcollapse{{ forloop.counter }}">
+                  <table class="table">
+                    <caption><a href="{{ recipe.recipe.url }}">Go To Recipe</a></caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Ingredients</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for ingredients in recipe.recipe.ingredientLines %}
+                      <tr>
+                        <th scope="row">{{ ingredients }}</th>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
