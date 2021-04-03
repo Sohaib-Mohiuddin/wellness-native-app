@@ -43,7 +43,10 @@ urlpatterns = [
     path('food-search/', food_app_views.food_search, name='food-search'),
     path('nutrient-search/', food_app_views.nutrient_search, name='nutrient-search'),
     path('bmi-calculator/', food_app_views.bmi_calculator, name='bmi-calculator'),
-    path('bmr-calculator/', food_app_views.bmr_calculator, name='bmr-calculator')
+    path('bmr-calculator/', food_app_views.bmr_calculator, name='bmr-calculator'),
+    path('measurement-converter/', food_app_views.measurement_converter, name='measurement-converter'),
+    path('other-calculators/', food_app_views.other_calculators, name='other-calculators'),
+    path('tea-calculator/', food_app_views.tea_calculator, name='tea-calculator'),
 ]
 
 # If debug mode

@@ -1,0 +1,20 @@
+{% extends "food_app/base.html" %} 
+{% block header %}
+  <title>Measurement Calculator</title>
+{%endblock header %}
+{% block content %}
+<div class="container mt-5">
+  <!-- bootstrap card to make the extra space look faded -->
+  <center>
+    <div class="omni-calculator" data-calculator="food/cooking-measurement" data-width="700" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617468070404">
+      <div class="omni-calculator-header">Cooking Measurement Converter</div>
+      <div class="omni-calculator-footer">
+        <a href="https://www.omnicalculator.com/food/cooking-measurement" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+      </div>
+    </div>
+  </center>
+</div>
+{% endblock content %}
+{% block scripts %}
+  <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
+{% endblock scripts %}

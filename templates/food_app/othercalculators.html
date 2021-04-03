@@ -1,0 +1,44 @@
+{% extends "food_app/base.html" %} 
+{% block header %}
+  <title>Other Calculators</title>
+{%endblock header %}
+{% block content %}
+<div class="container mt-5">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card-deck-wrapper">
+    <div class="card-deck mb-4">
+      <div class="omni-calculator mx-auto mb-5" data-calculator="food/donut" data-width="500" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617469123914">
+        <div class="omni-calculator-header">Donut Calculator</div>
+        <div class="omni-calculator-footer">
+          <a href="https://www.omnicalculator.com/food/donut" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+        </div>
+      </div>
+
+      <div class="omni-calculator mx-auto mb-5" data-calculator="food/chocolate" data-width="500" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617469247000">
+        <div class="omni-calculator-header">Chocolate Calculator</div>
+        <div class="omni-calculator-footer">
+          <a href="https://www.omnicalculator.com/food/chocolate" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+        </div>
+      </div>
+
+      <div class="omni-calculator mx-auto mb-5" data-calculator="food/perfect-pizza" data-width="500" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617470136179">
+        <div class="omni-calculator-header">Perfect Pizza Calculator</div>
+        <div class="omni-calculator-footer">
+          <a href="https://www.omnicalculator.com/food/perfect-pizza" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+        </div>
+      </div>
+
+      <div class="omni-calculator mx-auto mb-5" data-calculator="food/cake-serving" data-width="500" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617470164445">
+        <div class="omni-calculator-header">Cake Serving Calculator</div>
+        <div class="omni-calculator-footer">
+          <a href="https://www.omnicalculator.com/food/cake-serving" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+  <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
+{% endblock scripts %}

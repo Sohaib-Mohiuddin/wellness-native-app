@@ -35,6 +35,7 @@
 				        <a href="{% url 'recipe-search' %}" class="dropdown-item nav-link">Search Recipes</a>
 				        <a href="{% url 'food-search' %}" class="dropdown-item nav-link">Search Foods</a>
 				        <a href="{% url 'nutrient-search' %}" class="dropdown-item nav-link">Analyze Nutrients</a>
+				        <a href="{% url 'measurement-converter' %}" class="dropdown-item nav-link">Measurement Converter</a>
 					    </div>
 						</div>
 						<div class="dropdown">
@@ -42,6 +43,8 @@
 					    <div class="dropdown-menu">
 				        <a href="{% url 'bmi-calculator' %}" class="dropdown-item nav-link">BMI Calculator</a>
 				        <a href="{% url 'bmr-calculator' %}" class="dropdown-item nav-link">BMR Calculator</a>
+				        <a href="{% url 'tea-calculator' %}" class="dropdown-item nav-link">Tea and Caffeine Calculator</a>
+				        <a href="{% url 'other-calculators' %}" class="dropdown-item nav-link">Other Calculators</a>
 					    </div>
 						</div>
 					</div>
@@ -90,6 +93,8 @@
 	  <!-- Copyright -->
 	</footer>
 </body>
+{% block scripts %} {% endblock scripts %}
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

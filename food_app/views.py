@@ -152,3 +152,13 @@ def bmr_calculator(request):
 			messages.warning(request, f'Could Not Save. Try Again!')
 
 	return render(request, 'food_app/bmrcalculator.html', context)
+
+def measurement_converter(request):
+	return render(request, 'food_app/measurementconverter.html')
+
+def other_calculators(request):
+	return render(request, 'food_app/othercalculators.html')
+
+def tea_calculator(request):
+	return render(request, 'food_app/teacalculator.html')
+

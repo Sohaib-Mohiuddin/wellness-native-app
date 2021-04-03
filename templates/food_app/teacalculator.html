@@ -1,0 +1,27 @@
+{% extends "food_app/base.html" %} 
+{% block header %}
+  <title>Other Calculators</title>
+{%endblock header %}
+{% block content %}
+<div class="container mt-5">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card-deck">
+    <div class="omni-calculator mx-auto" data-calculator="food/tea-brewing" data-width="500" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617469520144">
+      <div class="omni-calculator-header">Tea Brewing Calculator</div>
+      <div class="omni-calculator-footer">
+        <a href="https://www.omnicalculator.com/food/tea-brewing" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+      </div>
+    </div>
+
+    <div class="omni-calculator" data-calculator="food/coffee-kick" data-width="500" data-config='{}' data-currency="CAD" data-show-row-controls="false" data-version="3" data-t="1617469858919">
+      <div class="omni-calculator-header">Coffee Kick Calculator</div>
+      <div class="omni-calculator-footer">
+        <a href="https://www.omnicalculator.com/food/coffee-kick" target="_blank"><img alt="Omni" class="omni-calculator-logo" src="https://cdn.omnicalculator.com/embed/omni-calculator-logo-long.svg" /></a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block scripts %}
+  <script async src="https://cdn.omnicalculator.com/sdk.js"></script>
+{% endblock scripts %}
