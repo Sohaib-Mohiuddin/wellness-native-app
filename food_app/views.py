@@ -84,9 +84,10 @@ def bmi_calculator(request):
 
 			print(context['bmi_result'])
 
-	if user.savedbmiresults_set:
-		context['queryset'] = user.savedbmiresults_set.all()
-		print('queryset', context['queryset'])
+	if user.is_authenticated:
+		if user.savedbmiresults_set:
+			context['queryset'] = user.savedbmiresults_set.all()
+			print('queryset', context['queryset'])
 
 	if request.method == "POST":
 		weight = request.POST.get('readonlyweight')
@@ -130,9 +131,10 @@ def bmr_calculator(request):
 				context['bmr_result'] = 10 * context['weight'] + 6.25 * context['height'] - 5 * context['age'] - 161
 				print(context['bmr_result'])
 
-	if user.savedbmrresults_set:
-		context['queryset'] = user.savedbmrresults_set.all()
-		print('queryset', context['queryset'])
+	if user.is_authenticated:
+		if user.savedbmrresults_set:
+			context['queryset'] = user.savedbmrresults_set.all()
+			print('queryset', context['queryset'])
 
 	if request.method == "POST":
 		weight = request.POST.get('readonlyweight')

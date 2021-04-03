@@ -75,7 +75,9 @@
             </div>
             <input type="number" name="bmrResult" class="form-control" aria-label="bmrResult" aria-describedby="basic-addon1" value="{{ bmr_result | floatformat:2 }}" readonly/>
           </div>
-          <button class="btn btn-primary" type="submit" name="submitBmrSaveDb">Save BMR Result</button>
+          {% if user.is_authenticated %}
+            <button class="btn btn-primary" type="submit" name="submitBmrSaveDb">Save BMR Result</button>
+          {% endif %}
         {% endif %}
       </form>
 
