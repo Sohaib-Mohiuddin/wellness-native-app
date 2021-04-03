@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from py_edamam import Edamam
-from .models import SavedBmiResults
+from .models import SavedBmiResults, SavedBmrResults
 import os
 
 # FOOD_APP VIEWS
@@ -71,28 +71,84 @@ def nutrient_search(request):
 	return render(request, 'food_app/nutrition_search.html', context)
 
 def bmi_calculator(request):
+	context = {}
 	user = request.user
 	if request.method == "GET":
-		weight = request.GET.get('userWeight')
-		height = request.GET.get('userHeight')
+		context['weight'] = request.GET.get('userWeight')
+		context['height'] = request.GET.get('userHeight')
 		
-		if weight and height:
-			weight = int(weight)
-			height = int(height)
-			bmi_result = weight / (height/100)**2
-			print(bmi_result)
-	
-	if request.method == "POST":
-		print('hello')
+		if context['weight'] and context['height']:
+			context['weight'] = int(context['weight'])
+			context['height'] = int(context['height'])
+			context['bmi_result'] = context['weight'] / (context['height']/100)**2
+
+			print(context['bmi_result'])
 
 	if user.savedbmiresults_set:
-		queryset = user.savedbmiresults_set.all()
-		print('queryset', queryset)
+		context['queryset'] = user.savedbmiresults_set.all()
+		print('queryset', context['queryset'])
 
-	context = {
-		'weight': weight,
-		'height': height,
-		'bmi_result': bmi_result,
-		'queryset': queryset,
-	}
+	if request.method == "POST":
+		weight = request.POST.get('readonlyweight')
+		height = request.POST.get('readonlyheight')
+		bmiResult = request.POST.get('bmiResult')
+
+		print(weight, height, bmiResult)
+
+		if weight and height and bmiResult:
+			save_result = SavedBmiResults(user=user, weight=weight, height=height, bmi_result=bmiResult)
+			save_result.save()
+			messages.success(request, f'Saved Your Weight, Height, And BMI Result!')
+		else:
+			messages.warning(request, f'Could Not Save. Try Again!')
+
 	return render(request, 'food_app/bmicalculator.html', context)
+
+def bmr_calculator(request):
+	'''
+	For men: BMR = 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) + 5
+
+	For women: BMR = 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) – 161
+	'''
+	context = {}
+	user = request.user
+	if request.method == "GET":
+		context['weight'] = request.GET.get('userWeight')
+		context['height'] = request.GET.get('userHeight')
+		context['age'] = request.GET.get('userAge')
+		context['sex'] = request.GET.get('bmrsex')
+
+		if context['weight'] and context['height'] and context['age'] and context['sex']:
+			context['weight'] = int(context['weight'])
+			context['height'] = int(context['height'])
+			context['age'] = int(context['age'])
+
+			if context['sex'] == 'Male':
+				context['bmr_result'] = 10 * context['weight'] + 6.25 * context['height'] - 5 * context['age'] + 5
+				print(context['bmr_result'])
+			else:
+				context['bmr_result'] = 10 * context['weight'] + 6.25 * context['height'] - 5 * context['age'] - 161
+				print(context['bmr_result'])
+
+	if user.savedbmrresults_set:
+		context['queryset'] = user.savedbmrresults_set.all()
+		print('queryset', context['queryset'])
+
+	if request.method == "POST":
+		weight = request.POST.get('readonlyweight')
+		height = request.POST.get('readonlyheight')
+		age = request.POST.get('readonlyage')
+		sex = request.POST.get('readonlysex')
+		bmrResult = request.POST.get('bmrResult')
+
+		print(weight, height, age, sex, bmrResult)
+
+		if weight and height and age and sex and bmrResult:
+			save_result = SavedBmrResults(user_bmr=user, weight=weight, height=height, age=age, sex=sex, bmr_result=bmrResult)
+			save_result.save()
+			messages.success(request, f'Saved Your Weight, Height, And BMI Result!')
+			return redirect('bmr-calculator')
+		else:
+			messages.warning(request, f'Could Not Save. Try Again!')
+
+	return render(request, 'food_app/bmrcalculator.html', context)

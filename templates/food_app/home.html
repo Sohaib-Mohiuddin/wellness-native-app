@@ -6,7 +6,7 @@
 <div class="container">
 	<!-- bootstrap card to make the extra space look faded -->
 	<div class="card-deck-wrapper">
-		<div class="card-deck">
+		<div class="card-deck mb-4">
 			<div class="card p-2 col-sm-3">
 				<img class="card-img-top" src="https://dcassetcdn.com/design_img/10150/25224/25224_294121_10150_image.jpg" alt="Recipe Search" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'recipe-search' %}">
@@ -28,14 +28,22 @@
 					<p class="card-text">Analyze any set of ingredients to get the total nutrient quantities.</p>
 				</a>
 			</div>
+		</div>
+		<div class="card-deck">
 			<div class="card p-2 col-sm-3">
-				<img class="card-img-top" src="https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg" alt="Nutrient Search" width="200" height="200">
+				<img class="card-img-top" src="https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg" alt="BMI Calculator" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'bmi-calculator' %}">
 					<h4 class="card-title">BMI Calculator</h4>
 					<p class="card-text">Calculate your BMI with your saved data or custom values.</p>
 				</a>
 			</div>
-
+			<div class="card p-2 col-sm-3">
+				<img class="card-img-top" src="https://i0.wp.com/thehealthymd.com/wp-content/uploads/2020/06/basal-metabolic-rate-bmr-shutterstock_1098255290-copy.jpeg" alt="BMR Calculator" width="200" height="200">
+				<a class="card-block stretched-link text-decoration-none" href="{% url 'bmr-calculator' %}">
+					<h4 class="card-title">BMR Calculator</h4>
+					<p class="card-text">Calculate your BMR with your saved data or custom values.</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>

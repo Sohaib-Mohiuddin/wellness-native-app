@@ -42,7 +42,8 @@ urlpatterns = [
     path('recipe-search/', food_app_views.recipe_search, name='recipe-search'),
     path('food-search/', food_app_views.food_search, name='food-search'),
     path('nutrient-search/', food_app_views.nutrient_search, name='nutrient-search'),
-    path('bmi-calculator/', food_app_views.bmi_calculator, name='bmi-calculator')
+    path('bmi-calculator/', food_app_views.bmi_calculator, name='bmi-calculator'),
+    path('bmr-calculator/', food_app_views.bmr_calculator, name='bmr-calculator')
 ]
 
 # If debug mode

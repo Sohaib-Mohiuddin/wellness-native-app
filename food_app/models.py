@@ -11,3 +11,14 @@ class SavedBmiResults(models.Model):
 
 	def __str__(self):
 		return f'{self.user.username} BMI Result(s)'
+
+class SavedBmrResults(models.Model):
+	user_bmr = models.ForeignKey(User, on_delete=models.CASCADE)
+	weight = models.IntegerField(default=0, verbose_name='weight')
+	height = models.IntegerField(default=0, verbose_name='height')
+	age = models.IntegerField(default=0, verbose_name='age')
+	sex = models.CharField(default='-', verbose_name='sex', max_length=50)
+	bmr_result = models.FloatField(default=0, verbose_name="bmrresult", blank=True)
+
+	def __str__(self):
+		return f'{self.user_bmr.username} BMR Result(s)'
