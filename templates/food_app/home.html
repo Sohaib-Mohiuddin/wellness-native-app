@@ -10,22 +10,29 @@
 			<div class="card p-2 col-sm-3">
 				<img class="card-img-top" src="https://dcassetcdn.com/design_img/10150/25224/25224_294121_10150_image.jpg" alt="Recipe Search" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'recipe-search' %}">
-					<h4 class="card-title">Search For Recipes</h4>
-					<p class="card-text">Search for any recipe that you want with instant results. You can search any of the 1,500,000+ recipes and save the ingredients as well as go to the website to see more about the recipe!</p>
+					<h4 class="card-title text-dark">Search For Recipes</h4>
+					<p class="card-text text-dark">Search for any recipe that you want with instant results. You can search any of the 1,500,000+ recipes and save the ingredients as well as go to the website to see more about the recipe!</p>
 				</a>
 			</div>
 			<div class="card p-2 col-sm-3">
 				<img class="card-img-top" src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-food-logo-designs-with-spoon-and-fork-png-image_4158238.jpg" alt="Food Search" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'food-search' %}">
-					<h4 class="card-title">Analyze Foods</h4>
-					<p class="card-text">Search for any food amongst the 600,000+ foods available and view the nutrient facts about those foods amongst similar results.</p>
+					<h4 class="card-title text-dark">Analyze Foods</h4>
+					<p class="card-text text-dark">Search for any food amongst the 600,000+ foods available and view the nutrient facts about those foods amongst similar results.</p>
 				</a>
 			</div>
 			<div class="card p-2 col-sm-3">
 				<img class="card-img-top" src="https://www.thebalancesmb.com/thmb/QO-Z1U5xaJAsZNlfqbelbrg7lfg=/3072x2304/smart/filters:no_upscale()/nutrition-label-172872825-596940b35f9b582c356dd02a.jpg" alt="Nutrient Search" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'nutrient-search' %}">
-					<h4 class="card-title">Analyze Ingredients</h4>
-					<p class="card-text">Analyze any set of ingredients to get the total nutrient quantities.</p>
+					<h4 class="card-title text-dark">Analyze Ingredients</h4>
+					<p class="card-text text-dark">Analyze any set of ingredients to get the total nutrient quantities.</p>
+				</a>
+			</div>
+			<div class="card p-2 col-sm-3">
+				<img class="card-img-top" src="https://media.istockphoto.com/vectors/half-filled-measuring-cup-vector-id521454985?k=6&m=521454985&s=612x612&w=0&h=MVTEiowN7vJ0aIg_tX6NJoYQR4S1ER3TfRFnvMnaIvc=" alt="Measurement Converter" width="200" height="200">
+				<a class="card-block stretched-link text-decoration-none" href="{% url 'measurement-converter' %}">
+					<h4 class="card-title text-dark">Measurement Converter</h4>
+					<p class="card-text text-dark">With this cooking measurement converter, you can convert any recipe into the units you like. But, it's not a regular converter, it can freely switch between volume and weight units as well, not just one or the other. Isn't that awesome? So, not only grams to cups, but also grams to tablespoons or cups to pounds.</p>
 				</a>
 			</div>
 		</div>
@@ -33,15 +40,35 @@
 			<div class="card p-2 col-sm-3">
 				<img class="card-img-top" src="https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg" alt="BMI Calculator" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'bmi-calculator' %}">
-					<h4 class="card-title">BMI Calculator</h4>
-					<p class="card-text">Calculate your BMI with your saved data or custom values.</p>
+					<h4 class="card-title text-dark">BMI Calculator</h4>
+					<p class="card-text text-dark">Calculate your BMI with your saved data or custom values.</p>
 				</a>
 			</div>
 			<div class="card p-2 col-sm-3">
 				<img class="card-img-top" src="https://i0.wp.com/thehealthymd.com/wp-content/uploads/2020/06/basal-metabolic-rate-bmr-shutterstock_1098255290-copy.jpeg" alt="BMR Calculator" width="200" height="200">
 				<a class="card-block stretched-link text-decoration-none" href="{% url 'bmr-calculator' %}">
-					<h4 class="card-title">BMR Calculator</h4>
-					<p class="card-text">Calculate your BMR with your saved data or custom values.</p>
+					<h4 class="card-title text-dark">BMR Calculator</h4>
+					<p class="card-text text-dark">Calculate your BMR with your saved data or custom values.</p>
+				</a>
+			</div>
+			<div class="card p-2 col-sm-3">
+				<img class="card-img-top" src="https://www.schooloftea.org/images/home-update/learning-modules/brewing-a-perfect-cup-of-tea.jpg" alt="Tea Brewing Calculator" width="200" height="200">
+				<a class="card-block stretched-link text-decoration-none" href="{% url 'tea-calculator' %}">
+					<h4 class="card-title text-dark">Tea Brewing Calculator</h4>
+					<p class="card-text text-dark">The calculator lets you choose the type of tea you want to steep, how strong you'd like it, and how much you want. In total, it has 33 recipes, from traditional Chinese style brewing to cold brews. It also includes a calculator that will help you cool the water to the right temperature if you don't have a fancy temperature set kettle.</p>
+				</a>
+			</div>
+			<div class="card p-2 col-sm-3">
+				<img class="card-img-top" src="https://uploads-cdn.omnicalculator.com/images/paczkowanie/Doughnut.jpg" alt="Tea Brewing Calculator" width="200" height="200">
+				<a class="card-block stretched-link text-decoration-none" href="{% url 'other-calculators' %}">
+					<h4 class="card-title text-dark">Other Useful Calculators</h4>
+					<p class="card-text text-dark">This includes:</p>
+					<ul class="text-dark">
+						<li>Donut Calculator</li>
+						<li>Perfect Pizza Calculator</li>
+						<li>Chocolate Calculator</li>
+						<li>Cake Serving Calculator</li>
+					</ul>
 				</a>
 			</div>
 		</div>
