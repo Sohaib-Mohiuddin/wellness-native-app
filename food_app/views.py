@@ -58,11 +58,11 @@ def nutrient_search(request):
 			query = query.split('\r\n')
 			try: 
 				search_results = edamam_conn.search_nutrient(query)
-				messages.success(request, f'Returned Nutrition Facts!')
 				context = {
 					'query': query,
 					'search_results': search_results
 				}
+				messages.success(request, f'Returned Nutrition Facts!')
 			except: 
 				messages.warning(request, f'Cannot Find Nutritional Values. Check Format/Spelling Of Ingredients List!')
 				# messages.warning(request, f'Refreshed!')

@@ -24,11 +24,22 @@
         </div>
       </form>
 
+      <br><br>
+
       <!-- <div class="row"> -->
       {% if query %}
       <div class="container">
-        <h3>{{ query }}</h3>
-        <h3>Calories: {{ search_results.calories }}</h3>
+        <p class="lead"><strong>Search: </strong></p>
+        {% for ingredient in query %}
+         <p class="lead">{{ ingredient }}</p>
+        {% endfor %}
+        
+        <br>
+
+        <h4>Calories: {{ search_results.calories }}</h4>
+
+        <br>
+
         <table class="table">
           <thead>
             <tr>
@@ -37,7 +48,7 @@
               <th scope="col">% Daily Value</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="lead">
             <tr>
               {% if 'ENERC_KCAL' in search_results.totalDaily %}
                 <td scope="row">{{ search_results.totalNutrients.ENERC_KCAL.label }} {{ search_results.totalNutrients.ENERC_KCAL.quantity | floatformat:1 }} {{ search_results.totalNutrients.ENERC_KCAL.unit }}</td>
